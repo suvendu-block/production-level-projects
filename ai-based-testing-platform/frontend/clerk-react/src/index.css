@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand: #0ea5e9;
+  --color-surface: #0b1020;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-fade-up { animation: fadeUp 0.7s ease-out both; }
+@keyframes drift {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(40px,-30px) scale(1.1); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+.bg-orb { animation: drift 8s ease-in-out infinite; }
