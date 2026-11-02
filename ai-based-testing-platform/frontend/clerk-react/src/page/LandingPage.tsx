@@ -1,4 +1,5 @@
-import { SignInButton, SignUpButton } from '@clerk/react';
+import { Link } from "react-router-dom";
+import { SignInButton, SignUpButton, useUser } from '@clerk/react';
 
 const features = [
     { title: "AI Test Generator", desc: "Turns diffs, OpenAPI specs, and user stories into unit/API/E2E test cases as real, committable code." },
@@ -23,6 +24,7 @@ const steps = [
 ];
 
 function LandingPage() {
+    const { isSignedIn } = useUser();
     return (
         <div className="w-full text-white bg-black relative overflow-hidden">
             <div className="pointer-events-none fixed inset-0 -z-10">
@@ -39,11 +41,17 @@ function LandingPage() {
                         AITP drafts reviewable tests, runs them in isolated sandboxes, keeps them passing as your product evolves, and reports what is risky, flaky, or untested.
                     </p>
                     <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <SignUpButton mode="modal">
-                            <button className="rounded-full bg-white cursor-pointer px-6 py-3 text-sm font-semibold text-black hover:bg-white/90 hover:scale-105 transition-all">
-                                Get Started
-                            </button>
-                        </SignUpButton>
+                        {isSignedIn ? (
+                            <Link to="/dashboard" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90 hover:scale-105 transition-all">
+                                Go to Dashboard
+                            </Link>
+                        ) : (
+                            <SignUpButton mode="modal" redirectUrl="/dashboard">
+                                <button className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90 hover:scale-105 transition-all">
+                                    Get Started
+                                </button>
+                            </SignUpButton>
+                        )}
                         <button className="rounded-full border cursor-pointer border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
                             Watch Demo
                         </button>
@@ -116,11 +124,17 @@ function LandingPage() {
                     Ship Faster. Break Less. Test Smarter.
                 </h2>
                 <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                    <SignUpButton mode="modal">
-                        <button className="rounded-full cursor-pointer bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90 hover:scale-105 transition-all">
-                            Start Testing for Free
-                        </button>
-                    </SignUpButton>
+                        {isSignedIn ? (
+                            <Link to="/dashboard" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90 hover:scale-105 transition-all">
+                                Go to Dashboard
+                            </Link>
+                        ) : (
+                            <SignUpButton mode="modal" redirectUrl="/dashboard">
+                                <button className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90 hover:scale-105 transition-all">
+                                    Start Testing for Free
+                                </button>
+                            </SignUpButton>
+                        )}
                     <button className="rounded-full cursor-pointer border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
                         Book a Demo
                     </button>

@@ -16,8 +16,11 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(clerkMiddleware());
 
+import dashboardRoutes from "./src/routes/dashboard.routes.js";
+
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api", dashboardRoutes);
 
 // Start server after database connection
 const startServer = async () => {
