@@ -15,14 +15,14 @@
 
 | Layer | Scope | Tooling | Runs on | Coverage floor |
 |-------|-------|---------|---------|----------------|
-| **Unit** | pure functions, prompt assembly, risk math, fle logic | pytest (backend), vitest (FE) | every PR | backend **80 %**, FE **70 %** |
+| **Unit** | pure functions, prompt assembly, risk math, flake logic | pytest (backend), vitest (FE) | every PR | backend **80 %**, FE **70 %** |
 | **Integration** | API endpoints + real Postgres (ephemeral) + Redis + RLS assertions | pytest + testcontainers | every PR | all endpoints ✓ |
 | **Contract** | OpenAPI schema ↔ router ↔ FE generated client drift | schemathesis + CI check | every PR | 0 drift tolerance |
 | **E2E (platform)** | happy-path user journeys in browser (login, review flow, run view) | Playwright | nightly + release | core flows |
 | **Sandbox determinism** | same suite × same image × 10 runs = same results | pytest custom runner | weekly | 10/10 identical |
 | **Migration** | upgrade → autogenerate empty diff; forward + inverse | alembic | every PR | — |
 | **Load/perf** | scheduler, queue, API at 2× target ([SPECIFICATION.md](SPECIFICATION.md) §6) | k6 + custom runner driver | per release | p95s within targets |
-| **Security** | dependency scan, container scan, SAST, secrets grep | GitHub/Austin-style tooling view below | every PR + weekly deep | zero critical |
+| **Security** | dependency scan, container scan, SAST, secrets grep | see [SECURITY.md](SECURITY.md) §4 | every PR + weekly deep | zero critical |
 | **Tenant isolation** | cross-org access attempts across API/DB/queue/storage | pytest adversarial suite | every PR + prod smoke | 0 leaks |
 | **AI evals** | generation/healing quality vs golden datasets | eval harness ([§5](#5-ai-quality-evals)) | prompt/model changes + weekly | thresholds below |
 
@@ -49,10 +49,10 @@ Every eval run scores generated artifacts on:
 | **Acceptance rate** | % of proposals a human panel accepts unchanged | ≥ 50 % |
 | **Valid-syntax rate** | passes static validation first try | ≥ 90 % |
 | **Contract coverage** | specified behaviors asserted / total behaviors | ≥ 80 % |
-| **Brittleness count** | sleep/selectors without fallback/asserts without failure modes | 0 tolerance on hard list; ≤ 1 soft trainings |
+| **Brittleness count** | sleep/selectors without fallback/asserts without failure modes | 0 tolerance on hard list; ≤ 1 soft class |
 | **Flake stability** | N-run result consistency in sandbox | ≥ 95 % |
 | **Heal precision** (M2+) | accepted heal proposals / proposed | ≥ 60 % |
-| **Heal side-effect rate** (M2+) | fixes that error [TROUBLESHOOTING.md-safe noise category], per eval | ≤ 5 % |
+| **Heal side-effect rate** (M2+) | fixes that introduce new failures (regressions), per eval | ≤ 5 % |
 
 - LLM-as-judge is allowed **only** for cosmetic/readability dimensions; correctness metrics are **deterministic programs** (schema check, run-result, coverage analyzer). [PRINCIPLES.md](PRINCIPLES.md) #3.
 - Every prompt/model change ships with: eval diff table + representative 3 examples (before/after) attached to the PR.
@@ -79,7 +79,7 @@ Pentests pre-GA (external) + internal adversarial suite continuously; supply-cha
 
 - Badge per service: coverage %, gate pass-rate.
 - Evals landing page (internal): per-release acceptance trends — tied to the L0→L4 autonomy ladder in [VISION.md](VISION.md).
-- Coverage eviction: stale -by-90-day untested modules appear on "risk debt" list; leaders see it, and it is discussed in the monthly review ([OPERATIONS.md](OPERATIONS.md) §7).
+- Coverage eviction: modules untested for 90 days appear on the "risk debt" list; it is discussed in the monthly review ([OPERATIONS.md](OPERATIONS.md) §7).
 
 ```
                     ┌──────────────────────────────┐

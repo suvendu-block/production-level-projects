@@ -40,7 +40,7 @@ on push/PR → [test gates (TESTING.md §3)] → build images (multi-stage, dist
 
 ```
 deploy/terraform/
-├── modules/ (network, cluster, postgres, redis-key, buckets, vault, dns, cdn)
+├── modules/ (network, cluster, postgres, redis, buckets, vault, dns, cdn)
 └── stacks/ (dev(off), staging, prod)
 deploy/helm/
 ├── charts/aitp/ (umbrella: api, workers, web, ingress, otel)
@@ -52,7 +52,7 @@ Rules:
 1. `terraform plan` posted on infra PRs; `apply` requires two approvals (infra owner + on-call).
 2. State in locked remote bucket; never local; DR: state backup + pattern documented.
 3. Everything namespaced: prod never shares a cluster account with staging; sandbox egress NetworkPolicies applied at cluster level.
-4. **Manual, error-free工业园 standard**: `terraform-docs` in every module README; drift detection runs weekly; drift = incident (P3).
+4. **Manual-error-free standard:** `terraform-docs` in every module README; drift detection runs weekly; drift = incident (P3).
 
 ## 5. Release & rollout best methods
 

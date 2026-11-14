@@ -166,4 +166,4 @@ Post-incident: postmortem within 7 d ([OPERATIONS.md](OPERATIONS.md) §6).
 
 ---
 
-*Pair this with: [DEPLOYMENTS.md](DEPLOYMENTS.md) (IaC + release strategy) · [TROUBLESHOOTING.md](TROUBLESHOOTING.md) (when it breaks) · [STEPS](#) is version-tagged per [CHANGELOG.md](CHANGELOG.md).*
+*Pair this with: [DEPLOYMENTS.md](DEPLOYMENTS.md) (IaC + release strategy) · [TROUBLESHOOTING.md](TROUBLESHOOTING.md) (when it breaks). This file is version-tagged like everything else — see [CHANGELOG.md](CHANGELOG.md).*

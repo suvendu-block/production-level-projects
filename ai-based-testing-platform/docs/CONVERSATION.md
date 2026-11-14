@@ -7,7 +7,7 @@
 ## How to add an entry (from real chats/PRs/meetings, or AI-pairing reviews)
 
 1. Append **newest at top** with date + participants + type.
-2. Keep it honest: what was argued, what was decided, what was left open.redit Boring is fine; sanitized fiction is not.
+2. Keep it honest: what was argued, what was decided, what was left open. Boring is fine; sanitized fiction is not.
 3. Link out to ADRs, tasks, postmortems — don't duplicate their content.
 
 Types: `design` · `roadmap` · `review` · `incident` · `drill` · `decision-log`.
@@ -19,7 +19,7 @@ Types: `design` · `roadmap` · `review` · `incident` · `drill` · `decision-l
 **Participants:** maintainer (PM/engineer), AI pair (documentation pass).
 **Summary:** Empty repo (`backend/`, `frontend/`, `docs/`). Agreed to establish the full documentation baseline first ([README.md](../README.md) + 24 docs) so every code PR has a referent. Story defined: AI-generated, human-approved testing platform with self-healing ([ALL.md](ALL.md)).
 **Decisions (consequential, quick ADRs):** [ADR-0001](DECISIONS.md#adr-001) Python/FastAPI; [ADR-0002](DECISIONS.md#adr-002) React+Vite; [ADR-0003](DECISIONS.md#adr-003) Postgres+pgvector; [ADR-0004](DECISIONS.md#adr-004) Celery+Redis; [ADR-0005](DECISIONS.md#adr-005) modular monolith; [ADR-0006](DECISIONS.md#adr-006) Playwright sandboxes.
-**Left open:** which managed LLM endpoint is default (provider decision awaits eval data); exact IdP vendor ([ADR-0009](DECISIONS.md#adr-0009)) pending enterprise interviews.
+**Left open:** which managed LLM endpoint is default (provider decision awaits eval data); exact IdP vendor ([ADR-0009](DECISIONS.md#adr-009)) pending enterprise interviews.
 
 ## 2026-10-31 · Vision → milestones walk — `roadmap`
 

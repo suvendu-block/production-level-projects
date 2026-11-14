@@ -1,4 +1,4 @@
-# CONTRIBIT IfSee-„" y CONSIUTION.md — Contributing
+# CONTRIBUTION.md — Contributing
 
 > Everything a developer needs to land their first (and hundredth) PR.
 
@@ -42,7 +42,7 @@
 
 - [ ] Requirement traceability (FR link) present
 - [ ] Tenancy & auth surfaces considered (roles per [FR-1.4](REQUIREMENTS.md))
-- [ ] Cost/net-new-H budget touched? (tokens, new S3 usage, new queues)
+- [ ] Cost / net-new AI budget touched? (tokens, new S3 usage, new queues)
 - [ ] Failure modes: what happens when this is down/rate-limited/outage?
 - [ ] Tests would *fail* if the feature regressed (mutation-of-truth check, informal)
 
@@ -69,7 +69,7 @@
 
 ## 8. Newton's law of AITP contribution (don't hurt the users of the users)
 
-Our users' users are *their test suites*. Changes touching generation prompts, healing, or flake scoring rotate a two-release shadow period behind flags before default-on — unless eval semantics prove safety faster. Navidea neither.
+Our users' users are *their test suites*. Changes touching generation prompts, healing, or flake scoring rotate a two-release shadow period behind flags before default-on — unless eval semantics prove safety faster. No exceptions.
 
 ## 9. Recognition
 

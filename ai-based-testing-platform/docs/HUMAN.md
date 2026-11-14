@@ -65,4 +65,4 @@ Day 5: give feedback: what's confusing in docs? Fix one page in the same PR you 
 
 ---
 
-*Escalation path: technical → issue with `escalate` label; conduct → maintainers privately; security → [SECURITY.md](SECURITY.md) channel ( Issues are never the place for vulnerability reports).*
+*Escalation path: technical → issue with `escalate` label; conduct → maintainers privately; security → [SECURITY.md](SECURITY.md) channel (issues are never the place for vulnerability reports).*

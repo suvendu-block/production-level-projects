@@ -31,7 +31,7 @@ Every FR lists its **verification method** (V-x): `QA`=manual, `AT`=automated te
 | FR-2.4 | Repo content MUST be embedded in the vector store with source/hash lineage; re-index MUST be incremental (only changed files). | P0 | M1 | AT |
 | FR-2.5 | Repos with `.aitp.md` conventions file: generation MUST honor it (style, fixtures, naming) and show the file in run details. | P1 | M2 | EVAL |
 | FR-2.6 | Disconnecting a repo MUST stop webhooks and trigger data deletion per [PRIVACY.md](PRIVACY.md) within the stated retention. | P0 | M4 | AT |
-| FR-2.7 | Secrets present in repo config buffers MUST be detected and refused with a warning Explaining how to supply them properly (vault reference). | P0 | M1 (basic regex) / M4 (full) | AT |
+| FR-2.7 | Secrets present in repo config buffers MUST be detected and refused with a warning explaining how to supply them properly (vault reference). | P0 | M1 (basic regex) / M4 (full) | AT |
 
 ## FR-3 — AI test generation
 
@@ -52,7 +52,7 @@ Every FR lists its **verification method** (V-x): `QA`=manual, `AT`=automated te
 
 | ID | Requirement | Pri | Mile | Verify |
 |----|-------------|-----|------|--------|
-| FR-4.1 | Every test decision (approved/edit/reject) MUST be recorded with the user + timestamp (immutability on lineage). | P0 | M1 | AT |
+| FR-4.1 | Run triggers MUST be auditable: who or what triggered the run (human, webhook, schedule), when, and with what scope/filter config. | P0 | M1 | AT |
 | FR-4.2 | Users MUST trigger test runs (full suite or subset) and see real-time progress (parallel: ready → running → results), with per-test artifacts (logs, video/e2e, screenshots). | P0 | M1 (API tests) / M2 (Playwright) | AT/QA |
 | FR-4.3 | Every run MUST bind to a git SHA; reports are reproducible for that SHA. | P0 | M1 | AT |
 | FR-4.4 | Runs MUST execute in isolated ephemeral sandboxes (pinned images, network policy, resource caps); no shared state between tenants. | P0 | M1 | AT + pentest |
@@ -76,7 +76,7 @@ Every FR lists its **verification method** (V-x): `QA`=manual, `AT`=automated te
 | FR-6.1 | E2E runs MUST capture screenshots and diff against baselines with perceptual hashing + threshold config per project. | P0 | M3 | EVAL |
 | FR-6.2 | Baselines MUST be managed (update, reject, view history); AI triage: meaningful vs cosmetic; cosmetic auto-classify ≤ cost goals. | P0 | M3 | EVAL |
 | FR-6.3 | Diff view with overlay/opacity + selectable regions; annotate known-dynamics (timestamps, ads) as "ignore regions". | P1 | M3 | QA |
-| FR-6.4 | Rejection of a baseline update MUST create a linked story endpoint (proposal review milestone). | P1 | M3 | AT |
+| FR-6.4 | Rejection of a baseline update MUST create a linked review record visible in the proposal-review flow ([FR-3.4](REQUIREMENTS.md)). | P1 | M3 | AT |
 
 ## FR-7 — Analytics & risk (M3)
 

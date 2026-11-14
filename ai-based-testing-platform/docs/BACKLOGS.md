@@ -54,7 +54,7 @@ P0 = core · P1 = major value · P2 = icebox/nice · Size S(<1d) M(≤3d) L(≤2
 | BL-D1 | AI Gateway: provider adapters, zero-retention mode, failover | FR-3 | P0 | L | idea |
 | BL-D2 | Prompt-set library (plan/generate/critique) + content hashing | FR-3.8/FR-3.10 | P0 | M | idea |
 | BL-D3 | API test generator (pytest/pytest+TestClient) | FR-3.1 | P0 | L | idea |
-| BL-D4 | Static validation pipeline ((ast, import-resolve, schema checks)) | FR-3.3 | P0 | M | idea |
+| BL-D4 | Static validation pipeline (AST, import resolution, schema checks) | FR-3.3 | P0 | M | idea |
 | BL-D5 | Self-critique + rubric scoring + repair loop | FR-3.8 | P0 | M | idea |
 | BL-D6 | Token budgets + caching + cost reporting per run | FR-3.9 | P0 | M | idea |
 | BL-D7 | E2E generator: Playwright TS, a11y selectors, sleep-forbidden lint | FR-3.6 | P0 | L | idea |

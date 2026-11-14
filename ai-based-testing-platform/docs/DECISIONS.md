@@ -45,7 +45,7 @@
 
 **Decision:** Celery workers (queues: `gen`, `exec`, `analytics`), Redis as broker/cache/locks; idempotent tasks with dedupe keys.
 
-**Consequences:** battle-tested; visibility tooling exists (flower-lite); Redis Sentinel from M4; long-running generation split into checkpointed sub-tasks ( perseveres across worker restarts).
+**Consequences:** battle-tested; visibility tooling exists (flower-lite); Redis Sentinel from M4; long-running generation split into checkpointed sub-tasks (so it survives worker restarts).
 
 **Alternatives:** Temporal (superior workflow guarantees, more ops surface now); asyncio-in-process (no durability); Sidekiq-alikes (not Python).
 
@@ -65,7 +65,7 @@
 
 **Decision:** every test run executes in a fresh container from pinned digest images; E2E = Playwright; unit/API = pytest (+TestClient).
 
-**Consequences:** reproducible runs, deterministic注定 flake attribution; cold-start cost managed by warm pool at M4; Playwright chosen for built-in trace/video and a11y-tree selectors (self-healing friendly).
+**Consequences:** reproducible runs, deterministic flake attribution; cold-start cost managed by warm pool at M4; Playwright chosen for built-in trace/video and a11y-tree selectors (self-healing friendly).
 
 **Alternatives:** Selenium grid (legacy selector pain); long-lived runner VMs (cross-contamination risk); browser-in-API-pod (tenancy bleed).
 
@@ -95,7 +95,7 @@
 
 **Decision:** OIDC federation (Google/GitLab/GitHub + enterprise SAML/OIDC later); AITP issues 15-min access tokens + rotating refresh; service tokens for CI steps.
 
-**Consequences:** no password storage; enterprise-SO买家 ready by M4 with provider swap only; revocation is refresh-rotation + denylist.
+**Consequences:** no password storage; enterprise-buyer ready by M4 with provider swap only; revocation is refresh-rotation + denylist.
 
 **Alternatives:** local accounts+magic links (slower enterprise adoption); sessions-in-cookies-only (headless/CI friction).
 
@@ -113,11 +113,11 @@
 
 **Status:** accepted (2026-10-29)
 
-**Decision:** MinIO locally, S3 (or GCS) managed in prod; single signed-URL'retrieval pattern; versioning on.
+**Decision:** MinIO locally, S3 (or GCS) managed in prod; single signed-URL retrieval pattern; versioning on.
 
 **Consequences:** cheap, durable traces/videos/screenshots; lifecycle rules encode [PRIVACY.md](PRIVACY.md) retention; signed URLs keep bandwidth off the API.
 
-**Alternatives:** DB BLOB (bloat + slow); filesystem onNode (fails multi-pod).
+**Alternatives:** DB BLOB (bloat + slow); filesystem on node (fails multi-pod).
 
 ## ADR-0012 — Terraform + Kubernetes for prod; docker compose for dev {#adr-012}
 

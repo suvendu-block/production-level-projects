@@ -12,17 +12,17 @@
 - Include: affected area (API/GitHub integration/UI/sandboxes), reproduction steps or PoC, impact hypothesis, versions/commit SHA.
 - If the issue involves customer data exposure, mark the report `P1`.
 - **Response SLAs:** ack ≤ 24 h; triage ≤ 3 business days; fix or mitigation track ≤ 30 days for high/critical, coordinated disclosure respected (we credit reporters in the future advisory when they want credit).
-- Safe-harbor: good-faith research within scope (our own deployments, notDoS-ing prod) will never trigger legal threats from us.
+- Safe-harbor: good-faith research within scope (our own deployments, not DoS-ing prod) will never trigger legal threats from us.
 
 ## 2. Security model (what we protect from whom)
 
 | Trust boundary | Threat | Mitigation (anchor) |
 |----------------|--------|---------------------|
-| Internet → API | spoofing, abuse, injection | OIDC/JWT ([ADR-0009](DECISIONS.md#adr-0009)), schema validation, rate limits, no client-trusted IDs |
-| Org A ↔ Org B | tenant data bleed | RLS + org-scoped everything ([ADR-0008](DECISIONS.md#adr-0008)); adversarial tenancy tests ([TESTING.md](TESTING.md) §2) |
-| Platform → GitHub | stolen repo access | GitHub App least-scope tokens, webhook HMAC verification, short TTL ([ADR-0010](DECISIONS.md#adr-0010)) |
-| Sandbox ↔ Platform ↔ Internet | sandbox escape / lateral movement | pinned images, non-root, egress allowlist, per-tenant network policy ([ADR-0006](DECISIONS.md#adr-0006)) |
-| Platform → LLM provider | code/data leakage to third party | zero-retention endpoints, never-training policy, redaction in prompt assembly ([ADR-0007](DECISIONS.md#adr-0007), [PRIVACY.md](PRIVACY.md) §4) |
+| Internet → API | spoofing, abuse, injection | OIDC/JWT ([ADR-0009](DECISIONS.md#adr-009)), schema validation, rate limits, no client-trusted IDs |
+| Org A ↔ Org B | tenant data bleed | RLS + org-scoped everything ([ADR-0008](DECISIONS.md#adr-008)); adversarial tenancy tests ([TESTING.md](TESTING.md) §2) |
+| Platform → GitHub | stolen repo access | GitHub App least-scope tokens, webhook HMAC verification, short TTL ([ADR-0010](DECISIONS.md#adr-010)) |
+| Sandbox ↔ Platform ↔ Internet | sandbox escape / lateral movement | pinned images, non-root, egress allowlist, per-tenant network policy ([ADR-0006](DECISIONS.md#adr-006)) |
+| Platform → LLM provider | code/data leakage to third party | zero-retention endpoints, never-training policy, redaction in prompt assembly ([ADR-0007](DECISIONS.md#adr-007), [PRIVACY.md](PRIVACY.md) §4) |
 | AI output → repo/CI | malicious/harmful generated code | static validation + human approval + PR review — AI never merges itself ([PRINCIPLES.md](PRINCIPLES.md) #1) |
 | Operator → prod | insider overreach | audit log, least-privilege RBAC, no direct prod data access without audit event |
 
@@ -83,4 +83,4 @@ Security lifecycle never overrides privacy rights: deletion requests, export req
 
 ---
 
-*Contact: `security@aitp.example` (monitored) · public-good-faith research welcome within safe-harbor rules above. UI text for researchers: "Thank you."
+*Contact: `security@aitp.example` (monitored) · good-faith research welcome within safe-harbor rules above.*

@@ -83,8 +83,8 @@ Model routing (config, per env): plan/completeness = small model; generation/cri
 ## 5. Execution protocol
 
 - **Sandbox image** (pinned digests): python-runner (pytest, httpx, coverage, crypto-run utils) and playwright-runner (browsers, traces, videos). Images rebuilt and re-scanned weekly.
-- **Lifecycle:** `queued → provisioning → running → collecting → reporting | failed | timeout`. Heartbeats every 15s; orchestrator kills > (suite_timeout or 20 minjed); network policy: egress only to target app + defined allowlist; no egress to AITP internals beyond result upload endpoint.
-- **Secrets:** injected via mounted files (env-var forbidden for values > none), TTL ≤ run, never logged; rotation on use ([SECURITY.md](SECURITY.md)).
+- **Lifecycle:** `queued → provisioning → running → collecting → reporting | failed | timeout`. Heartbeats every 15s; orchestrator kills > (suite_timeout or 20 min); network policy: egress only to target app + defined allowlist; no egress to AITP internals beyond result upload endpoint.
+- **Secrets:** injected via mounted files (env-var values forbidden), TTL ≤ run, never logged; rotation on use ([SECURITY.md](SECURITY.md)).
 - **Results:** per-test OTel span + one aggregate event → `test_results`; retry policy = {3 attempts with jittered backoff}; flake re-run schedule defined in [TESTING.md](TESTING.md).
 - **Artifacts in S3** under `runs/{run_id}/{test_id}/…` with signed 15-min GETs.
 
