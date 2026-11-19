@@ -9,7 +9,7 @@
 1. **Docs are code.** A change without its doc change (or an explicit `docs: none needed` statement in the PR) is incomplete — [PRINCIPLES.md](PRINCIPLES.md) #9.
 2. **AI proposes; humans approve.** Applies to platform users *and* to us: contributors may use AI assistants, but reviewers decide; AI-drafted PRs must disclose it.
 3. **Every non-obvious choice gets an ADR** in [DECISIONS.md](DECISIONS.md); every design debate gets a record in [CONVERSATION.md](CONVERSATION.md).
-4. We follow the Contributor Covenant (2.1): harassignment is real — harassment or bad faith gets addressed under escalation rules.
+4. We follow the Contributor Covenant 2.1: harassment or bad faith gets addressed under escalation rules - no exceptions.
 
 ## 2. Getting set up
 
